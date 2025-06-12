@@ -1,0 +1,121 @@
+// Nombre: Yugeris
+// Matrícula: E123
+// Proyecto: Programación 2
+
+using System;
+
+namespace Tarea1App
+{
+    public class MiembroDeLaComunidad
+    {
+        public string Nombre { get; set; } = string.Empty;        public string ID { get; set; } = string.Empty;
+
+        public virtual void MostrarInfo()
+        {
+            Console.WriteLine($"Nombre: {Nombre}, ID: {ID}");
+        }
+    }
+
+    public class Estudiante : MiembroDeLaComunidad
+    {
+        public string Carrera { get; set; } = string.Empty;
+    }
+
+    public class ExAlumno : MiembroDeLaComunidad
+    {
+        public int AñoGraduacion { get; set; }
+    }
+
+    public class Empleado : MiembroDeLaComunidad
+    {
+        public string Departamento { get; set; } = string.Empty;
+    }
+
+    public class Docente : Empleado
+    {
+        public string Materia { get; set; } = string.Empty;
+    }
+
+    public class Administrativo : Empleado
+    {
+        public string Area { get; set; } = string.Empty;
+    }
+
+    public class Administrador : Docente
+    {
+        public string NivelAdministrativo { get; set; } = string.Empty;
+    }
+
+    public class Maestro : Docente
+    {
+        public int AñosExperiencia { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Estudiante
+            Estudiante estudiante = new Estudiante
+            {
+                Nombre = "Yugeris",
+                ID = "E123",
+                Carrera = "Desarrollo de Software"
+            };
+
+            estudiante.MostrarInfo();
+            Console.WriteLine($"Carrera: {estudiante.Carrera}\n");
+
+            // Administrador
+            Administrador admin = new Administrador
+            {
+                Nombre = "Ana",
+                ID = "A456",
+                Departamento = "Departamento de Programación",
+                Materia = "POO",
+                NivelAdministrativo = "Coordinadora"
+            };
+
+            admin.MostrarInfo();
+            Console.WriteLine($"Departamento: {admin.Departamento}, Materia: {admin.Materia}, Nivel: {admin.NivelAdministrativo}\n");
+
+            // Maestro
+            Maestro maestro = new Maestro
+            {
+                Nombre = "Luis",
+                ID = "M789",
+                Departamento = "Tecnología",
+                Materia = "Bases de Datos",
+                AñosExperiencia = 10
+            };
+
+            maestro.MostrarInfo();
+            Console.WriteLine($"Departamento: {maestro.Departamento}, Materia: {maestro.Materia}, Años de experiencia: {maestro.AñosExperiencia}\n");
+
+            // ExAlumno
+            ExAlumno exalumno = new ExAlumno
+            {
+                Nombre = "Claudia",
+                ID = "EX202",
+                AñoGraduacion = 2019
+            };
+
+            exalumno.MostrarInfo();
+            Console.WriteLine($"Año de graduación: {exalumno.AñoGraduacion}\n");
+
+            // Administrativo
+            Administrativo administ = new Administrativo
+            {
+                Nombre = "Carlos",
+                ID = "AD334",
+                Departamento = "Recursos Humanos",
+                Area = "Contratación"
+            };
+
+            administ.MostrarInfo();
+            Console.WriteLine($"Departamento: {administ.Departamento}, Área: {administ.Area}\n");
+
+            Console.ReadLine(); // Espera para que veas el resultado
+        }
+    }
+}
